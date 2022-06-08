@@ -757,10 +757,9 @@ class GaussianDiffusion:
             model_kwargs = {}
         if noise is None:
             noise = th.randn_like(x_start)
-        x_t = self.q_sample(x_start, t, noise=noise)
 
         terms = {}
-
+        
         if self.loss_type == LossType.KL or self.loss_type == LossType.RESCALED_KL:
             terms["loss"] = self._vb_terms_bpd(
                 model=model,

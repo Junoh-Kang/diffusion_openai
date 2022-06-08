@@ -143,8 +143,8 @@ def create_argparser():
         use_ddim=False,
         dataset_name="full",
         num_channels2=32,
-        model_name="model180000.pt",
-        model_name2="model180000.pt",
+        model_name="model500000.pt",
+        model_name2="model500000.pt",
         model_change_at=-1,
     )
     defaults.update(model_and_diffusion_defaults())

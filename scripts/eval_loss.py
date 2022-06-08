@@ -63,18 +63,19 @@ def main():
                     model_kwargs=cond,
                 )   
                 loss = compute_losses()
-                #loss = diffusion.training_losses(model, batch, ts)
                 losses[t].append(loss['loss'].cpu())
-    for i in range(4000):
-        losses[i] = torch.cat(losses[i])
-    losses = torch.stack(losses)
-    np.save('./{}'.format(args.num_channels), losses)
-    breakpoint()
+                
+            tmp = list(range(4000))
+            for i in range(4000):
+                tmp[i] = torch.cat(losses[i])
+            tmp = torch.stack(tmp)
+            np.save('./{}'.format(args.num_channels), tmp)
+            # breakpoint()
 
 def create_argparser():
     defaults = dict(
         dataset_name="full",
-        model_name="model180000.pt",
+        model_name="model500000.pt",
         data_dir="",
         schedule_sampler="uniform",
         image_size=128,

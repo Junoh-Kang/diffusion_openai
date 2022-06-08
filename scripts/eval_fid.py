@@ -19,12 +19,11 @@ def load_images(image_path):
     images = torch.tensor(images, dtype=torch.float32).permute(0,3,1,2)
     return images
 
-
 image_path = '/data1/junoh/2022_DM/results/sample/openai_celeba_full/'
-# image_path = image_path + 'ddpm_c128model180000_to_c32model180000/'
-# f_list = list(glob.glob(image_path + 'model*'))
 
-image_path = image_path + 'ddpm_c32model180000_to_c128model180000/'
+### model specific
+
+image_path = image_path + 'ddpm_c32model500000_to_c128model500000/'
 f_list = list(glob.glob(image_path + 'model*'))
 
 # image_path = image_path + 'ddpm_c32model180000/'
