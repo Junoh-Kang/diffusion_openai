@@ -23,7 +23,7 @@ image_path = '/data1/junoh/2022_DM/results/sample/openai_celeba_full/'
 
 ### model specific
 
-image_path = image_path + 'ddpm_c32model500000_to_c128model500000/'
+image_path = image_path + 'ddpm_c192model500000_to_c32model500000/'
 f_list = list(glob.glob(image_path + 'model*'))
 
 # image_path = image_path + 'ddpm_c32model180000/'

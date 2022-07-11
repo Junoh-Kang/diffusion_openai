@@ -80,7 +80,7 @@ def main():
         image_path = image_path + 'ddpm_' + model_name + '/'
     
     image_path = image_path + 'model_change_at{}/'.format(args.model_change_at)
-    os.makedirs(image_path + 'sample_process', exist_ok=True)
+    os.makedirs(image_path + 'sample_process2', exist_ok=True)
     os.makedirs(image_path + 'sample', exist_ok=True)
     
     for image_num in range(args.num_start, args.num_start + args.num_samples):
@@ -121,17 +121,17 @@ def main():
                 )
                 img = out['sample']
 
-            show_t = list(range(3999, 3900, -10)) + [0]
+            show_t = list(range(3999, 3800, -10)) + [0]
             if t in show_t:
                 history['sample'].append(out['sample'])
                 history['pred_xstart'].append(out['pred_xstart'])
 
         sample = th.cat([*history['sample'], *history['pred_xstart']])
         sample = ((sample + 1) * 127.5).clamp(0, 255).to(th.uint8)
-        sample_process = utils.make_grid(sample, nrow=11).permute(1,2,0).cpu().numpy()
+        sample_process = utils.make_grid(sample, nrow=21).permute(1,2,0).cpu().numpy()
         sample_image = sample[-1].permute(1,2,0).cpu().numpy()
 
-        imageio.imwrite(image_path + 'sample_process/{}.png'.format(image_num), sample_process)
+        imageio.imwrite(image_path + 'sample_process2/{}.png'.format(image_num), sample_process)
         imageio.imwrite(image_path + 'sample/{}.png'.format(image_num), sample_image)
 
 def create_argparser():
